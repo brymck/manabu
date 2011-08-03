@@ -1,0 +1,13 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Content:</b>
+  <%= @question.content %>
+  <ul>
+    <% @question.answers.each do |answer| %>
+      <%= render :partial => "answers/answer", :locals => { :answer => answer } %>
+    <% end %>
+  </ul>
+</p>
+
+<%= link_to 'Edit', edit_question_path(@question) %> |

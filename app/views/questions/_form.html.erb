@@ -1,0 +1,49 @@
+<%= form_for(@question) do |f| %>
+  <% if @question.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@question.errors.count, "error") %> prohibited this question from being saved:</h2>
+
+      <ul>
+      <% @question.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <% Level.find(:all).each do |level| %>
+      <%= check_box_tag "question[level_ids][]", level.id, @question.levels.include?(level) %>
+      <%= level.name %>
+    <% end %>
+  </div>
+  <div class="field">
+    <%= f.label :content %><br />
+    <%= f.text_area :content %>
+  </div>
+  <table>
+    <tr>
+      <td>A</td>
+      <td><%= text_field "answers[0][content]", @question.answers[0] ? @question.answers[0].content : nil %></td>
+      <td><%= check_box_tag "answers[0][correct]", nil, @question.answers[0] ? @question.answers[0].correct? : nil %></td>
+    </tr>
+    <tr>
+      <td>B</td>
+      <td><%= text_field "answers[1][content]", @question.answers[1] ? @question.answers[1].content : nil %></td>
+      <td><%= check_box_tag "answers[1][correct]", nil, @question.answers[1] ? @question.answers[1].correct? : nil %></td>
+    </tr>
+    <tr>
+      <td>C</td>
+      <td><%= text_field "answers[2][content]", @question.answers[2] ? @question.answers[2].content : nil %></td>
+      <td><%= check_box_tag "answers[2][correct]", nil, @question.answers[2] ? @question.answers[2].correct? : nil %></td>
+    </tr>
+    <tr>
+      <td>D</td>
+      <td><%= text_field "answers[3][content]", @question.answers[3] ? @question.answers[3].content : nil %></td>
+      <td><%= check_box_tag "answers[3][correct]", nil, @question.answers[3] ? @question.answers[3].correct? : nil %></td>
+    </tr>
+  </table>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
