@@ -1,7 +1,3 @@
 <nav>
-  <ul>
-    <li><%= link_to t(:questions), questions_path %></li>
-    <li><%= link_to t(:answers),   answers_path %></li>
-  </ul>
-  <%= breadcrumbs.render %>
+  <%= breadcrumbs.render :format => :inline %>
 </nav>

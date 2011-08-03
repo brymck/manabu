@@ -2,8 +2,14 @@
 <html>
   <%= render :partial => "layouts/head" %>
 <body>
-  <%= render :partial => "layouts/sidebar" %>
-<%= yield %>
-
+  <div class="container">
+    <h1><%= link_to t(:manabu), home_path %></h1>
+    <hr>
+    <%= render :partial => "layouts/sidebar" %>
+    <hr>
+    <%= yield %>
+    <hr>
+    <%= render :partial => "layouts/footer" %>
+  </div>
 </body>
 </html>

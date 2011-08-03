@@ -1,13 +1,14 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Content:</b>
-  <%= @question.content %>
+<div id="question">
+  <%= textile @question.content %>
+</div>
+<div id="answers">
   <ul>
     <% @question.answers.each do |answer| %>
       <%= render :partial => "answers/answer", :locals => { :answer => answer } %>
     <% end %>
   </ul>
-</p>
+</div>
 
-<%= link_to 'Edit', edit_question_path(@question) %> |
+<%= link_to 'Edit', edit_question_path(@question) %>

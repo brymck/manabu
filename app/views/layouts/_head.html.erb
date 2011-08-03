@@ -1,6 +1,12 @@
 <head>
   <title><%= title %></title>
-  <%= stylesheet_link_tag :all %>
+  <%= stylesheet_link_tag "blueprint/screen", :media => "screen, projection" %>
+  <%= stylesheet_link_tag "blueprint/print", :media => "print" %>
+  <!--[if lt IE 8]>
+    <%= stylesheet_link_tag "blueprint/ie", :media => "screen, projection" %>
+  <![endif]-->
+  <%= stylesheet_link_tag "blueprint/plugins/fancy-type/screen", :media => "screen, projection" %>
+  <%= stylesheet_link_tag "application" %>
   <%= javascript_include_tag :defaults %>
   <%= csrf_meta_tag %>
 </head>

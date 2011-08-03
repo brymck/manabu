@@ -47,7 +47,7 @@ class QuestionsController < ApplicationController
     respond_to do |format|
       if @question.save
         params[:answers].each do |answer|
-          @question.answers.create :content => answer[1][:content][0], :correct => !answer[1][:correct].nil?
+          @question.answers.create :content => answer[1][:content], :correct => !answer[1][:correct].nil?
         end
         format.html { redirect_to(@question, :notice => 'Question was successfully created.') }
         format.xml  { render :xml => @question, :status => :created, :location => @question }
@@ -65,8 +65,10 @@ class QuestionsController < ApplicationController
 
     respond_to do |format|
       if @question.update_attributes(params[:question])
+        i = 0
         params[:answers].each do |answer|
-          @question.answers.create :content => answer[1][:content][0], :correct => !answer[1][:correct].nil?
+          @question.answers[i].update_attributes :content => answer[1][:content], :correct => !answer[1][:correct].nil?
+          i += 1
         end
         format.html { redirect_to(@question, :notice => 'Question was successfully updated.') }
         format.xml  { head :ok }

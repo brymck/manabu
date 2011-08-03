@@ -9,3 +9,8 @@
 5.times do
   Level.create
 end
+
+Section.create :name => "Grammar"
+Section.create :name => "Vocabulary"
+Section.create :name => "Kanji"
+Section.create :name => "Reading Comprehension"

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110803191538) do
+ActiveRecord::Schema.define(:version => 20110803221255) do
 
   create_table "answers", :force => true do |t|
     t.text    "content"
@@ -28,10 +28,32 @@ ActiveRecord::Schema.define(:version => 20110803191538) do
 
   add_index "levels_questions", ["level_id", "question_id"], :name => "index_levels_questions_on_level_id_and_question_id", :unique => true
 
+  create_table "levels_sections", :id => false, :force => true do |t|
+    t.integer "level_id",   :null => false
+    t.integer "section_id", :null => false
+  end
+
+  add_index "levels_sections", ["level_id", "section_id"], :name => "index_levels_sections_on_level_id_and_section_id", :unique => true
+
   create_table "questions", :force => true do |t|
     t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "section_id", :null => false
+  end
+
+  create_table "section_translations", :force => true do |t|
+    t.integer  "section_id"
+    t.string   "locale"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "section_translations", ["section_id"], :name => "index_section_translations_on_section_id"
+
+  create_table "sections", :force => true do |t|
+    t.string "name", :null => false
   end
 
 end

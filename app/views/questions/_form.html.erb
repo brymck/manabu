@@ -12,6 +12,9 @@
   <% end %>
 
   <div class="field">
+    <%= select("question", "section_id", Section.all.collect {|s| [ s.name, s.id ] }) %>
+  </div>
+  <div class="field">
     <% Level.find(:all).each do |level| %>
       <%= check_box_tag "question[level_ids][]", level.id, @question.levels.include?(level) %>
       <%= level.name %>
@@ -22,26 +25,14 @@
     <%= f.text_area :content %>
   </div>
   <table>
-    <tr>
-      <td>A</td>
-      <td><%= text_field "answers[0][content]", @question.answers[0] ? @question.answers[0].content : nil %></td>
-      <td><%= check_box_tag "answers[0][correct]", nil, @question.answers[0] ? @question.answers[0].correct? : nil %></td>
-    </tr>
-    <tr>
-      <td>B</td>
-      <td><%= text_field "answers[1][content]", @question.answers[1] ? @question.answers[1].content : nil %></td>
-      <td><%= check_box_tag "answers[1][correct]", nil, @question.answers[1] ? @question.answers[1].correct? : nil %></td>
-    </tr>
-    <tr>
-      <td>C</td>
-      <td><%= text_field "answers[2][content]", @question.answers[2] ? @question.answers[2].content : nil %></td>
-      <td><%= check_box_tag "answers[2][correct]", nil, @question.answers[2] ? @question.answers[2].correct? : nil %></td>
-    </tr>
-    <tr>
-      <td>D</td>
-      <td><%= text_field "answers[3][content]", @question.answers[3] ? @question.answers[3].content : nil %></td>
-      <td><%= check_box_tag "answers[3][correct]", nil, @question.answers[3] ? @question.answers[3].correct? : nil %></td>
-    </tr>
+    <% 4.times do |num| %>
+      <% answer = @question.answers[num] %>
+      <tr>
+        <td><%= "ABCD"[num] %></td>
+        <td><%= text_field "answers[#{num}]", "content", :value => answer.content  unless answer.nil? %></td>
+        <td><%= check_box_tag "answers[#{num}][correct]", nil,     answer.correct? unless answer.nil? %></td>
+      </tr>
+    <% end %>
   </table>
   <div class="actions">
     <%= f.submit %>

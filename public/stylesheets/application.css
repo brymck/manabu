@@ -1,0 +1,31 @@
+/* Force aliasing */
+html > body {
+    font-size: 11pt;
+  }
+
+/* Missing translations */
+.translation_missing { background-color: #f9e5ec !important; color: #903 !important; }
+
+/* Header spacing */
+h1 a { color: #222; text-decoration: none; }
+h1 a:hover { color: #222; text-decoration: underline; }
+h1 { margin-bottom: 0.25em; }
+h1 + hr { margin-bottom: 0; }
+
+/* Centering */
+.center { text-align: center; }
+
+/* Answers */
+#answers ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+#answers li a {
+  color: #222;
+  display: block;
+  text-decoration: none;
+}
+#answers li a:hover {
+  background-color: #fff6bf;
+  color: #514721;
+}
