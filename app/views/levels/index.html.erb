@@ -1,0 +1,16 @@
+<section class="change">
+  <h3><%= t :change_exam %></h3>
+  <ul class="horizontal">
+    <% Exam.find(:all).each do |exam| %>
+      <%= content_tag :li, link_to(exam.name, exam_path(exam)) if exam != @exam %>
+    <% end %>
+  </ul>
+</section>
+<section class="choose">
+  <h3><%= t :choose_level %></h3>
+  <ul class="horizontal">
+    <% @levels.each do |level| %>
+      <li><%= link_to level.name, exam_level_path(level.exam, level) %></li>
+    <% end %>
+  </ul>
+</section>

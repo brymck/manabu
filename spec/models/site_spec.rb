@@ -1,17 +1,18 @@
 require 'spec_helper'
 
-describe Answer do
+describe Site do
   pending "add some examples to (or delete) #{__FILE__}"
 end
 
-
 # == Schema Information
 #
-# Table name: answers
+# Table name: sites
 #
 #  id          :integer         not null, primary key
-#  content     :text
-#  correct     :boolean
-#  question_id :integer
+#  name        :string(255)
+#  address     :string(255)
+#  lat         :float
+#  lng         :float
+#  location_id :integer
 #
 

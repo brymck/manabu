@@ -15,6 +15,17 @@ h1 + hr { margin-bottom: 0; }
 /* Centering */
 .center { text-align: center; }
 
+/* Changing and choosing */
+
+/* Horizontal lists */
+ul.horizontal {
+  list-style-type: none;
+  padding: 0;
+}
+ul.horizontal li {
+  display: inline-block;
+}
+
 /* Answers */
 #answers ul {
   list-style-type: none;

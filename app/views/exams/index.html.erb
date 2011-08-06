@@ -1,0 +1,8 @@
+<section class="choose">
+  <h3><%= t :choose_exam %></h3>
+  <ul class="horizontal">
+    <% @exams.each do |exam| %>
+      <li><%= link_to exam.name, exam %></li>
+    <% end %>
+  </ul>
+</section>

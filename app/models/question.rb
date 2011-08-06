@@ -21,13 +21,15 @@ class Question < ActiveRecord::Base
   end
 end
 
+
 # == Schema Information
 #
 # Table name: questions
 #
-#  id         :integer         primary key
+#  id         :integer         not null, primary key
 #  content    :text
-#  created_at :timestamp
-#  updated_at :timestamp
+#  created_at :datetime
+#  updated_at :datetime
+#  section_id :integer         not null
 #
 

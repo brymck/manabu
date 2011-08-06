@@ -8,7 +8,7 @@ module ApplicationHelper
   end
 
   def title
-    "Manabu"
+    @title.nil? ? t(:manabu) : @title
   end
 
   def copyright_years

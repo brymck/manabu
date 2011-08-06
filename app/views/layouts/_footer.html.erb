@@ -1,1 +1,7 @@
-<footer class="center quiet">Copyright <%= copyright_years %> Bryan McKelvey</footer>
+<footer class="center quiet">
+  <ul>
+    <%= raw %w(about privacy).map { |label| link_to t(label), label }.join " | " %>
+  </ul>
+  <p>Copyright <%= copyright_years %> Bryan McKelvey</p>
+</footer>
+<%= debug params %>

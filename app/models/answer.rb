@@ -3,11 +3,12 @@ class Answer < ActiveRecord::Base
   validates :content, :presence => true
 end
 
+
 # == Schema Information
 #
 # Table name: answers
 #
-#  id          :integer         primary key
+#  id          :integer         not null, primary key
 #  content     :text
 #  correct     :boolean
 #  question_id :integer
